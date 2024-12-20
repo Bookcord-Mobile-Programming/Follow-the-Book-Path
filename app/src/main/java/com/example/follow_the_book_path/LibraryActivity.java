@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +42,7 @@ public class LibraryActivity extends AppCompatActivity {
 
         // 데이터 초기화
         bookList = new ArrayList<>();
-        bookAdapter = new BookAdapter(bookList, this::onBookClicked); // 클릭 리스너 추가
+        bookAdapter = new BookAdapter(bookList, this::onBookClicked, this::onBookDeleted);
         recyclerView.setAdapter(bookAdapter);
 
         // 데이터베이스 연결
@@ -82,6 +84,20 @@ public class LibraryActivity extends AppCompatActivity {
             intent.putExtra("bookId", -1); // -1은 새 책 추가 의미
             activityResultLauncher.launch(intent);
         });
+    }
+
+    private void onBookDeleted(int position) {
+        Book bookToDelete = bookList.get(position);
+
+        // 데이터베이스에서 삭제
+        db.execSQL("DELETE FROM book WHERE bookName = ?", new Object[]{bookToDelete.getTitle()});
+
+        // 리스트에서 삭제 및 RecyclerView 갱신
+        bookList.remove(position);
+        bookAdapter.notifyItemRemoved(position);
+
+        // 삭제 완료 메시지
+        Toast.makeText(this, "책이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
     }
 
     // 데이터베이스에서 책 데이터 로드
