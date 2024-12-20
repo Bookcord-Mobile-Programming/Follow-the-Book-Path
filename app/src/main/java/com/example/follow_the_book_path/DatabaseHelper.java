@@ -32,7 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "bookName TEXT NOT NULL, " +
                 "author TEXT NOT NULL, " +
                 "genre TEXT, " +
-                "Date DATE, " +
+                "startDate DATE, " +  // 시작 날짜
+                "endDate DATE, " +    // 완료 날짜
                 "status TEXT, " +
                 "imageResId INTEGER, " +  // 이미지 리소스 추가
                 "userId INTEGER NOT NULL, " +

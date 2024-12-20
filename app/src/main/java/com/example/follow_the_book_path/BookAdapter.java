@@ -30,16 +30,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = bookList.get(position);
 
-        // 제목, 저자, 이미지 설정
         holder.titleTextView.setText(book.getTitle());
         holder.authorTextView.setText(book.getAuthor());
+        holder.genreTextView.setText(book.getGenre());
+        holder.statusTextView.setText(book.getStatus());
         holder.bookImageView.setImageResource(book.getImageResId());
 
-        // 날짜 형식 변환 및 설정
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 형식
-        String formattedDate = sdf.format(book.getDate()); // Date 객체 -> 문자열
-        holder.dateTextView.setText(formattedDate);
+        // 날짜 설정
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        holder.startDateTextView.setText(sdf.format(book.getStartDate()));
+        holder.endDateTextView.setText(sdf.format(book.getEndDate()));
     }
+
 
     @Override
     public int getItemCount() {
@@ -48,15 +50,20 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     // ViewHolder 클래스
     static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, authorTextView, dateTextView;
+        TextView titleTextView, authorTextView, genreTextView, statusTextView;
+        TextView startDateTextView, endDateTextView;
         ImageView bookImageView;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.title_text_view);
             authorTextView = itemView.findViewById(R.id.author_text_view);
-            dateTextView = itemView.findViewById(R.id.date_text_view);
+            genreTextView = itemView.findViewById(R.id.genre_text_view);
+            statusTextView = itemView.findViewById(R.id.status_text_view);
+            startDateTextView = itemView.findViewById(R.id.start_date_text_view);
+            endDateTextView = itemView.findViewById(R.id.end_date_text_view);
             bookImageView = itemView.findViewById(R.id.book_image_view);
         }
     }
+
 }

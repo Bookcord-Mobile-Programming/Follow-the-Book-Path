@@ -48,10 +48,10 @@ public class LibraryActivity extends AppCompatActivity {
             bookAdapter.notifyDataSetChanged();
         });
 
-        Button sortDateButton = findViewById(R.id.sort_date_button);
-        sortDateButton.setOnClickListener(v -> {
-            // 날짜순 정렬
-            bookList.sort((b1, b2) -> b1.getDate().compareTo(b2.getDate()));
+        Button sortStartDateButton = findViewById(R.id.sort_date_button);
+        sortStartDateButton.setOnClickListener(v -> {
+            // 시작 날짜순 정렬
+            bookList.sort((b1, b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
             bookAdapter.notifyDataSetChanged();
         });
     }
@@ -74,12 +74,14 @@ public class LibraryActivity extends AppCompatActivity {
                     int imageResId = cursor.getInt(cursor.getColumnIndexOrThrow("imageResId"));
 
                     // 날짜 변환
-                    String dateStr = cursor.getString(cursor.getColumnIndexOrThrow("Date"));
+                    String startDateStr = cursor.getString(cursor.getColumnIndexOrThrow("startDate"));
+                    String endDateStr = cursor.getString(cursor.getColumnIndexOrThrow("endDate"));
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date date = sdf.parse(dateStr);
+                    Date startDate = startDateStr != null ? sdf.parse(startDateStr) : null;
+                    Date endDate = endDateStr != null ? sdf.parse(endDateStr) : null;
 
                     // 리스트에 추가
-                    bookList.add(new Book(title, author, genre, date, status, imageResId));
+                    bookList.add(new Book(title, author, genre, startDate, endDate, status, imageResId));
                 } catch (Exception e) {
                     Log.e("LibraryActivity", "Error parsing book data", e);
                 }
@@ -97,9 +99,9 @@ public class LibraryActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        db.execSQL("INSERT INTO book (bookName, author, genre, Date, status, imageResId, userId) VALUES " +
-                "('책1', '저자1', '소설', '2023-01-01', '완료', " + R.drawable.ic_launcher_foreground + ", 1), " +
-                "('책2', '저자2', '에세이', '2022-05-01', '읽는 중', " + R.drawable.ic_launcher_foreground + ", 1);");
+        db.execSQL("INSERT INTO book (bookName, author, genre, startDate, endDate, status, imageResId, userId) VALUES " +
+                "('책1', '저자1', '소설', '2023-01-01', '2023-01-10', '완료', " + R.drawable.ic_launcher_foreground + ", 1), " +
+                "('책2', '저자2', '에세이', '2022-05-01', '2022-05-15', '읽는 중', " + R.drawable.ic_launcher_foreground + ", 1);");
 
         db.close();
     }
