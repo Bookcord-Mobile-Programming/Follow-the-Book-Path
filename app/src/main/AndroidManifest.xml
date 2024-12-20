@@ -16,18 +16,27 @@
         <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"> <!-- MainActivity는 외부에서 실행 가능 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- LibraryActivity 등록 -->
+        <!-- LibraryActivity -->
         <activity
             android:name=".LibraryActivity"
-            android:exported="true" />
+            android:exported="true"> <!-- LibraryActivity도 외부에서 실행 가능 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- bookRecordActivity -->
+        <activity
+            android:name=".bookRecordActivity"
+            android:exported="false" /> <!-- 외부에서 실행 불가 -->
+
     </application>
-
-
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.follow_the_book_path;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -53,6 +54,15 @@ public class LibraryActivity extends AppCompatActivity {
             // 시작 날짜순 정렬
             bookList.sort((b1, b2) -> b1.getStartDate().compareTo(b2.getStartDate()));
             bookAdapter.notifyDataSetChanged();
+        });
+
+        // 책 추가 버튼 동작 추가
+        Button btnAddBook = findViewById(R.id.btnAddBook);
+        btnAddBook.setOnClickListener(v -> {
+            Intent intent = new Intent(LibraryActivity.this, bookRecordActivity.class);
+            intent.putExtra("userId", 1); // 현재 로그인한 사용자의 ID (예시로 1 설정)
+            intent.putExtra("bookId", -1); // -1은 새 책 추가를 의미
+            startActivity(intent); // bookRecordActivity 실행
         });
     }
 

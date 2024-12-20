@@ -27,11 +27,11 @@
             android:text="오래된순 정렬" />
 
         <Button
-            android:id="@+id/add_book_button"
+            android:id="@+id/btnAddBook"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="책 등록" />
+            android:text="책 추가" />
     </LinearLayout>
 
     <!-- RecyclerView -->
