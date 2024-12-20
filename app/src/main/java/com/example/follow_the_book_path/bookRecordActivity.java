@@ -52,22 +52,23 @@ public class bookRecordActivity extends AppCompatActivity {
 
 
         // 인텐트 받기 (책 정보가 있다면 북아이디, 유저아이디)
-        // 북아이디 있으면 상세 내용 바로 뜨기, 없으면 (신규 책 등록) 모두 빈칸
         Intent inIntent = getIntent();
         userId = inIntent.getIntExtra("userId", -1);
 
+        // userId 없으면 에러
         if (userId == -1) {
-            // userId가 없으면 에러
             Toast.makeText(this, "유저 정보가 없습니다.", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
+        // bookId 있으면 기존책 정보 불러옴, 신규면 비어있음
         bookId = inIntent.getIntExtra("bookId", -1);
-        if (bookId != -1) { // 기존 책이면 데이터 불러오기
+        if (bookId != -1) {
             loadBookData(bookId);
         }
 
+        // 완료 버튼 클릭 리스너 -> 책 정보 저장
         btnBookRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +77,7 @@ public class bookRecordActivity extends AppCompatActivity {
         });
     }
 
-    // 기존 책 정보 불러오기
+    // 기존 책이면 정보 불러오기
     private void loadBookData(int bookId) {
         Cursor cursor = db.rawQuery("SELECT * FROM book WHERE bookId = ?", new String[]{String.valueOf(bookId)});
 
@@ -99,7 +100,7 @@ public class bookRecordActivity extends AppCompatActivity {
         cursor.close();
     }
 
-    // 책 정보 저장하기
+    // 책 정보 수정/저장하기
     private void saveBookData() {
         String bookName = edtBookName.getText().toString();
         String author = edtAuthor.getText().toString();
@@ -123,8 +124,7 @@ public class bookRecordActivity extends AppCompatActivity {
         }
 
         // 인텐트 반환
-        Intent outIntent = new Intent(getApplicationContext(),
-                MainActivity.class);
+        Intent outIntent = new Intent(getApplicationContext(), MainActivity.class);
         outIntent.putExtra("result", "success");
         setResult(RESULT_OK, outIntent);
         finish(); // 액티비티 종료

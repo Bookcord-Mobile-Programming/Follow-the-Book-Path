@@ -8,11 +8,15 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/myLibrary"
-        android:text="내 서재"
+        android:id="@+id/btnAddBook"
+        android:text="책 추가"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>
