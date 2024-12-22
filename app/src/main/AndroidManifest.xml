@@ -22,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SignupActivity"/>
 
         <!-- LibraryActivity -->
         <activity
@@ -33,10 +34,21 @@
             </intent-filter>
         </activity>
 
+        <!--MainPageActivity-->
+        <activity
+            android:name=".MainPageActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- bookRecordActivity -->
         <activity
             android:name=".bookRecordActivity"
             android:exported="false" /> <!-- 외부에서 실행 불가 -->
-
     </application>
+
 </manifest>
+

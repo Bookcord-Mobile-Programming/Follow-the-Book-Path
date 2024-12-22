@@ -12,6 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         db = this.getWritableDatabase();
+
     }
 
     @Override
@@ -22,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // 사용자 테이블
         db.execSQL("CREATE TABLE user (" +
                 "userId INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "email TEXT NOT NULL, " +
+                "email TEXT NOT NULL UNIQUE, " +
                 "password TEXT NOT NULL, " +
                 "name TEXT NOT NULL);");
 

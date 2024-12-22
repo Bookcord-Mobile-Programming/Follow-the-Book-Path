@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+
 public class bookRecordActivity extends AppCompatActivity {
 
     private EditText edtBookName, edtAuthor, edtGenre, edtStartDate, edtEndDate;
@@ -91,6 +93,7 @@ public class bookRecordActivity extends AppCompatActivity {
         String startDate = edtStartDate.getText().toString();
         String endDate = edtEndDate.getText().toString();
         String status = spinnerStatus.getSelectedItem().toString();
+        int imageResId = R.drawable.bookimage; // 기본 이미지 리소스 ID 설정
 
         if (bookName.isEmpty() || author.isEmpty()) {
             Toast.makeText(this, "책 제목과 저자는 필수 입력 항목입니다.", Toast.LENGTH_SHORT).show();
@@ -99,13 +102,13 @@ public class bookRecordActivity extends AppCompatActivity {
 
         if (bookId == -1) {
             // 신규 추가
-            db.execSQL("INSERT INTO book (bookName, author, genre, startDate, endDate, status, userId) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                    new Object[]{bookName, author, genre, startDate, endDate, status, userId});
+            db.execSQL("INSERT INTO book (bookName, author, genre, startDate, endDate, status, imageResId, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    new Object[]{bookName, author, genre, startDate, endDate, status, imageResId, userId});
             Toast.makeText(this, "책이 추가되었습니다.", Toast.LENGTH_SHORT).show();
         } else {
             // 기존 데이터 수정
-            db.execSQL("UPDATE book SET bookName=?, author=?, genre=?, startDate=?, endDate=?, status=? WHERE bookId=?",
-                    new Object[]{bookName, author, genre, startDate, endDate, status, bookId});
+            db.execSQL("UPDATE book SET bookName=?, author=?, genre=?, startDate=?, endDate=?, status=?, imageResId=? WHERE bookId=?",
+                    new Object[]{bookName, author, genre, startDate, endDate, status, imageResId, bookId});
             Toast.makeText(this, "책이 수정되었습니다.", Toast.LENGTH_SHORT).show();
         }
 

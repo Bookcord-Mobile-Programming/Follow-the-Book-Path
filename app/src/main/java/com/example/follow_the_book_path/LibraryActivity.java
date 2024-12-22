@@ -122,7 +122,8 @@ public class LibraryActivity extends AppCompatActivity {
                     Date endDate = endDateStr != null ? sdf.parse(endDateStr) : null;
 
                     // 리스트에 추가
-                    bookList.add(new Book(title, author, genre, startDate, endDate, status, imageResId));
+                    int bookId = cursor.getInt(cursor.getColumnIndexOrThrow("bookId")); // bookId 추가
+                    bookList.add(new Book(bookId, title, author, genre, startDate, endDate, status, imageResId));
                 } catch (Exception e) {
                     Log.e("LibraryActivity", "Error parsing book data", e);
                 }
@@ -137,8 +138,8 @@ public class LibraryActivity extends AppCompatActivity {
     // 초기 데이터를 삽입 (테스트용)
     private void insertDummyData() {
         db.execSQL("INSERT INTO book (bookName, author, genre, startDate, endDate, status, imageResId, userId) VALUES " +
-                "('책1', '저자1', '소설', '2023-01-01', '2023-01-10', '완료', " + R.drawable.ic_launcher_foreground + ", 1), " +
-                "('책2', '저자2', '에세이', '2022-05-01', '2022-05-15', '읽는 중', " + R.drawable.ic_launcher_foreground + ", 1);");
+                "('책1', '저자1', '소설', '2023-01-01', '2023-01-10', '완료', " + R.drawable.bookimage + ", 1), " +
+                "('책2', '저자2', '에세이', '2022-05-01', '2022-05-15', '읽는 중', " + R.drawable.bookimage + ", 1);");
     }
 
     // 책 클릭 이벤트 처리
@@ -147,7 +148,7 @@ public class LibraryActivity extends AppCompatActivity {
 
         Intent intent = new Intent(LibraryActivity.this, bookRecordActivity.class);
         intent.putExtra("userId", userId); // 유저 ID 전달
-        intent.putExtra("bookId", position + 1); // 책 ID 전달 (position + 1은 예시)
+        intent.putExtra("bookId", selectedBook.getBookId()); // 책 ID 전달
         activityResultLauncher.launch(intent);
     }
 }
