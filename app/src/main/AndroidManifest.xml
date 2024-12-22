@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- SingupActivity       -->
         <activity android:name=".SignupActivity"/>
+
         <!-- LibraryActivity -->
         <activity
             android:name=".LibraryActivity"
@@ -33,6 +33,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--MainPageActivity-->
+        <activity
+            android:name=".MainPageActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <!-- bookRecordActivity -->
         <activity
             android:name=".bookRecordActivity"
