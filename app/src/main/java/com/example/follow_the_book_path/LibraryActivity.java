@@ -58,7 +58,7 @@ public class LibraryActivity extends AppCompatActivity {
         });
 
         // 초기 데이터 삽입 (테스트용)
-        insertDummyData();
+        //insertDummyData();
 
         // 데이터베이스에서 책 데이터 로드
         loadBooksFromDatabase();
@@ -143,12 +143,16 @@ public class LibraryActivity extends AppCompatActivity {
         bookAdapter.notifyDataSetChanged();
     }
 
+
+    /*
     // 초기 데이터를 삽입 (테스트용)
     private void insertDummyData() {
         db.execSQL("INSERT INTO book (bookName, author, genre, startDate, endDate, status, imageResId, userId) VALUES " +
                 "('책1', '저자1', '소설', '2023-01-01', '2023-01-10', '완료', " + R.drawable.bookimage + ", 1), " +
                 "('책2', '저자2', '에세이', '2022-05-01', '2022-05-15', '읽는 중', " + R.drawable.bookimage + ", 1);");
     }
+
+    */
 
     // 책 클릭 이벤트 처리
     private void onBookClicked(int position) {
