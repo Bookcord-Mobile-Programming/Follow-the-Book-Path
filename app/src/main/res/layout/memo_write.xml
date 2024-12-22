@@ -31,7 +31,6 @@
         android:layout_margin="18sp"
         android:text="책 선택하기"
         android:textColor="#ffffff"
-        android:backgroundTint="#6200EE"
         android:textSize="16sp" />
     <TextView
         android:id="@+id/memoBookName"
@@ -70,7 +69,6 @@
         android:id="@+id/memoSubmitBtn"
         android:layout_gravity="center"
         android:text="확인"
-        android:backgroundTint="#6200EE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

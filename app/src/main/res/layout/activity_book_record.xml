@@ -69,7 +69,7 @@
         android:id="@+id/txtEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="완독 날짜"
+        android:text="마지막으로 읽은 날짜"
         android:textSize="16dp" />
 
     <EditText
