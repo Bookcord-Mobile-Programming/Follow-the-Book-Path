@@ -21,7 +21,7 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // LibraryActivity로 이동
-                Intent intent = new Intent(MainPageActivity.this, LibraryActivity.class);
+                Intent intent = new Intent(MainPageActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -3,20 +3,28 @@
   <component name="VcsDirectoryMappings">
 <<<<<<< HEAD
 <<<<<<< HEAD
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Follow-the-Book-Path" vcs="Git" />
-=======
-    <mapping directory="" vcs="Git" />
->>>>>>> 9dedb39 ([Feat]로그인 회원가입 기능 구현)
-=======
-    <mapping directory="" vcs="Git" />
-=======
 <<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Follow-the-Book-Path" vcs="Git" />
 =======
     <mapping directory="" vcs="Git" />
 >>>>>>> 9dedb39 ([Feat]로그인 회원가입 기능 구현)
+=======
+=======
+>>>>>>> 6c0069d (임시)
+    <mapping directory="" vcs="Git" />
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 8eae165 ([fix] main 페이지와 로그인페이지 병합)
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Follow-the-Book-Path" vcs="Git" />
+=======
+    <mapping directory="" vcs="Git" />
+>>>>>>> 9dedb39 ([Feat]로그인 회원가입 기능 구현)
+<<<<<<< HEAD
+>>>>>>> 8eae165 ([fix] main 페이지와 로그인페이지 병합)
+=======
 >>>>>>> 8eae165 ([fix] main 페이지와 로그인페이지 병합)
 >>>>>>> b844a2c (임시커밋)
   </component>
