@@ -1,12 +1,15 @@
 package com.example.follow_the_book_path;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "followTheBookPath.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private SQLiteDatabase db;
 
     public DatabaseHelper(Context context) {
@@ -78,5 +81,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // 새 테이블 생성
         onCreate(db);
+    }
+    public void getBookTitle(ArrayList<String> list){
+        Cursor cursor = db.rawQuery("SELECT bookname FROM book",null);
+        while (cursor.moveToNext()) {
+            list.add(cursor.getString(0));
+        }
+        cursor.close();
+
     }
 }

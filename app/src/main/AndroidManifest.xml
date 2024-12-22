@@ -16,27 +16,6 @@
         <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
-            android:exported="true"> <!-- MainActivity는 외부에서 실행 가능 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SignupActivity"/>
-
-        <!-- LibraryActivity -->
-        <activity
-            android:name=".LibraryActivity"
-            android:exported="true"> <!-- LibraryActivity도 외부에서 실행 가능 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!--MainPageActivity-->
-        <activity
-            android:name=".MainPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,11 +23,28 @@
             </intent-filter>
         </activity>
 
+        <!-- SignupActivity -->
+        <activity android:name=".SignupActivity" />
+
+        <!-- LibraryActivity -->
+        <activity
+            android:name=".LibraryActivity"
+            android:exported="true" />
+
         <!-- bookRecordActivity -->
         <activity
             android:name=".bookRecordActivity"
-            android:exported="false" /> <!-- 외부에서 실행 불가 -->
+            android:exported="false" />
+
+        <!-- MemoActivity -->
+        <activity
+            android:name=".MemoActivity"
+            android:exported="false" />
+
+        <!-- MemoWriteActivity 추가 -->
+        <activity
+            android:name=".MemoWriteActivity"
+            android:exported="false" />
+
     </application>
-
 </manifest>
-
