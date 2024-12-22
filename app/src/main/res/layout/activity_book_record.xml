@@ -64,7 +64,7 @@
         android:hint="YYYY-MM-DD"
         android:inputType="date" />
 
-    <!--    완독날짜 입력 필드-->
+    <!--   마지막으로 읽은 날짜 입력 필드-->
     <TextView
         android:id="@+id/txtEndDate"
         android:layout_width="wrap_content"
@@ -92,8 +92,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!--    총 독서 시간 (타이머에서 불러오는건가)-->
-
     <!--    완료 버튼-->
     <Button
         android:id="@+id/btnBookRecord"
@@ -102,6 +100,5 @@
         android:text="완료"
         android:layout_marginTop="20dp" />
 
-    <!--    독서 메모 (따로 뺀다면 안 넣어도 될듯?)-->
 
 </LinearLayout>

@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString().trim();
 
                 if (validateLogin(email, password)) {
-                    // 로그인 성공시 홈 화면으로 이동
-                    Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
+                    // 로그인 성공 시 LibraryActivity로 이동
+                    Intent intent = new Intent(MainActivity.this, LibraryActivity.class);
                     startActivity(intent);
-
-                } else {
+                }
+                else {
                     // 로그인 실패시 메시지 출력
                     Toast.makeText(MainActivity.this, "로그인 실패: 이메일 또는 비밀번호를 확인하세요.", Toast.LENGTH_SHORT).show();
                 }
