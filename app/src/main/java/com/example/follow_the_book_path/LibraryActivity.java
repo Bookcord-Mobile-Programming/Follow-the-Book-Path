@@ -76,6 +76,14 @@ public class LibraryActivity extends AppCompatActivity {
             bookAdapter.notifyDataSetChanged();
         });
 
+        // 독서 메모 버튼 참조 및 이벤트 추가
+        Button goToMemoButton = findViewById(R.id.go_to_memo_button);
+        goToMemoButton.setOnClickListener(v -> {
+            // MemoActivity로 이동
+            Intent intent = new Intent(LibraryActivity.this, MemoActivity.class);
+            startActivity(intent);
+        });
+
         // 책 추가 버튼 설정
         Button btnAddBook = findViewById(R.id.btnAddBook);
         btnAddBook.setOnClickListener(v -> {
