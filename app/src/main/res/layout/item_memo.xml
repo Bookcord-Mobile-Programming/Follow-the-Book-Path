@@ -33,4 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="수정시간" />
+
+    <Button
+        android:id="@+id/btnDeleteMemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="삭제"
+        android:layout_gravity="end" />
+
 </LinearLayout>

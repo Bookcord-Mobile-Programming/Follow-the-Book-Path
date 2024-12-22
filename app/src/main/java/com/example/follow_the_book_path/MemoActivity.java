@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -171,9 +172,30 @@ public class MemoActivity extends AppCompatActivity {
         memoValues.put("updatedAt",updatedAt);
         long memoId = db.insert("memo", null, memoValues);
 
+
+
         // UI 업데이트
         memoList.add(new Memo(title, content, createdAt,updatedAt, pageNumber, bookName));
         memoAdapter.notifyDataSetChanged();
     }
+
+    public void deleteMemo(int position) {
+        // 삭제할 메모 가져오기
+        Memo memoToDelete = memoList.get(position);
+
+        // 데이터베이스에서 삭제
+        db.execSQL("DELETE FROM memo WHERE memoTitle = ? AND pageNumber = ?",
+                new Object[]{memoToDelete.getTitle(), memoToDelete.getPageNumber()});
+
+        // 리스트에서 삭제
+        memoList.remove(position);
+
+        // 어댑터 갱신
+        memoAdapter.notifyDataSetChanged();
+
+        // 사용자에게 알림
+        Toast.makeText(this, "메모가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+    }
+
 }
 
