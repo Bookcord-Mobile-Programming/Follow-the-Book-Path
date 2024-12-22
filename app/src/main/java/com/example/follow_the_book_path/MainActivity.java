@@ -11,6 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+<<<<<<< HEAD
+=======
+import android.widget.TextView;
+>>>>>>> b844a2c (임시커밋)
 
 import android.widget.Toast;
 
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 if (validateLogin(email, password)) {
                     // 로그인 성공시 홈 화면으로 이동
                     Intent intent = new Intent(MainActivity.this, MainPageActivity.class);
+
                     startActivity(intent);
                 } else {
                     // 로그인 실패시 메시지 출력
